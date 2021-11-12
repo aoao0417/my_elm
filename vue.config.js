@@ -1,0 +1,31 @@
+const data = require('./data.json')
+module.exports = {
+    lintOnSave:false,
+    publicPath:'./',
+    devServer:{
+        overlay:{
+            warning:false,
+            errors:false
+        },
+        before(app){
+          app.get('/api/goods',(req,res)=>{
+            res.json({
+              errno:0,
+              data:data.goods
+            });
+          });
+          app.get('/api/ratings',(req,res)=>{
+            res.json({
+              errno:0,
+              data:data.ratings
+            });
+          });
+          app.get('/api/seller',(req,res)=>{
+            res.json({
+              errno:0,
+              data:data.seller
+            });
+          });
+        }
+    }
+}
